@@ -5,7 +5,7 @@ import TrashIcon from "./components/icons/TrashIcon";
 import { filesData } from "./data/files";
 import Spinner from "./components/icons/Spinner";
 import ChevronRight from "./components/icons/ChevronRight";
-import { FilesContext } from "./components/context/filesContext";
+import { FilesContext } from "./context/FilesContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -17,6 +17,7 @@ function App() {
 
   const fetchAllFiles = async () => {
     return new Promise<string>((resolve) => {
+      // Here we don't need error handling, since we are using mock data and the data is always valid.
       setTimeout(() => {
         resolve(filesData);
       }, 600);
@@ -49,6 +50,8 @@ function App() {
   const deleteSelectedFiles = async () => {
     setIsDeleting(true);
     return new Promise(() => {
+      // Here we don't need error handling, since we are using mock data and the data is always valid.
+
       setTimeout(() => {
         const newFiles = allFiles?.filter(
           (file) => !selectedFiles.includes(file.id)

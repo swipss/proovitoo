@@ -2,9 +2,8 @@ import moment from "moment";
 import Checkbox from "./Checkbox";
 import FolderIcon from "./icons/FolderIcon";
 import HourglassIcon from "./icons/Hourglass";
-
 import XMarkIcon from "./icons/XMark";
-import { FileProps, FilesContext } from "./context/filesContext";
+import { FileProps, FilesContext } from "../context/FilesContext";
 import { useContext } from "react";
 
 const TableRow: React.FC<FileProps> = ({
