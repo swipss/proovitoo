@@ -96,7 +96,9 @@ function App() {
             </button>
             <div className="relative overflow-x-auto">
               <table
-                className={`${isDeleting ? "opacity-50" : ""} w-full divide-y`}
+                className={`${
+                  isDeleting ? "opacity-50" : ""
+                } w-full divide-y whitespace-nowrap`}
               >
                 <thead>
                   <tr>
@@ -107,10 +109,10 @@ function App() {
                       />
                     </th>
                     <th scope="col"></th>
-                    <th scope="col" className="w-32 py-2 font-medium">
+                    <th scope="col" className="w-32 px-6 py-2 font-medium">
                       Allkirjad
                     </th>
-                    <th scope="col" className="w-32 py-2 font-medium">
+                    <th scope="col" className="w-32 px-6 py-2 font-medium">
                       Versioon
                     </th>
                     <th scope="col" className="w-56 py-2 font-medium text-left">
@@ -118,7 +120,7 @@ function App() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y ">
+                <tbody className="divide-y">
                   {allFiles?.map((file) => (
                     <TableRow
                       key={file.id}

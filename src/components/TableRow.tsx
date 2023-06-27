@@ -18,6 +18,7 @@ const TableRow: React.FC<FileProps> = ({
   version,
 }) => {
   const { selectedFiles, setSelectedFiles } = useContext(FilesContext);
+  const isRowSelected = selectedFiles.includes(id);
 
   const renderLabel = () => {
     if (type === "CONTAINER") return <ContainerLabel />;
@@ -39,8 +40,6 @@ const TableRow: React.FC<FileProps> = ({
     return null;
   };
 
-  const isRowSelected = selectedFiles.includes(id);
-
   const handleSelectFile = () => {
     if (selectedFiles.includes(id)) {
       setSelectedFiles(selectedFiles.filter((fileId) => fileId !== id));
@@ -50,7 +49,11 @@ const TableRow: React.FC<FileProps> = ({
   };
 
   return (
-    <tr className={`${isRowSelected ? "bg-[#E4F3E8]" : ""}`}>
+    <tr
+      className={`${
+        isRowSelected ? "bg-[#E4F3E8]" : "bg-white"
+      } transition-all`}
+    >
       <td className="w-5">
         <Checkbox onChange={handleSelectFile} isChecked={isRowSelected} />
       </td>
@@ -108,7 +111,7 @@ function StatusLabel({
     if (status === "DECLINED") return "bg-[#FFEEEE]";
   };
 
-  const icon = () => {
+  const renderIcon = () => {
     if (status === "SIGNING")
       return <HourglassIcon className="w-[1rem] h-[1rem] m-auto" />;
     if (status === "DECLINED")
@@ -119,7 +122,7 @@ function StatusLabel({
     <span
       className={`${bgColor()} flex items-center justify-center gap-2 px-2 py-1 m-auto font-medium rounded w-max`}
     >
-      {icon()}
+      {renderIcon()}
       <p className="text-sm">
         {signedBy}/{totalSigners}
       </p>
