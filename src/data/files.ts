@@ -1,4 +1,4 @@
-export const files = [
+const files = [
   {
     id: "1",
     name: "Hankedokumendid-5",
@@ -44,3 +44,7 @@ export const files = [
     createdBy: "Anne Salat",
   },
 ];
+
+const filesData = JSON.stringify(files, null, 2);
+
+export { filesData };
