@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 interface CheckboxProps {
   onChange?: () => void;
   isChecked?: boolean;

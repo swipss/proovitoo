@@ -50,8 +50,7 @@ function App() {
   const deleteSelectedFiles = async () => {
     setIsDeleting(true);
     return new Promise(() => {
-      // Here we don't need error handling, since we are using mock data and the data is always valid.
-
+      // Here we don't need error handling, since the data will always be deleted.
       setTimeout(() => {
         const newFiles = allFiles?.filter(
           (file) => !selectedFiles.includes(file.id)
