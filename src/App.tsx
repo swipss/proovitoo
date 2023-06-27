@@ -121,20 +121,39 @@ function App() {
                   </tr>
                 </thead>
                 <tbody className="divide-y">
-                  {allFiles?.map((file) => (
-                    <TableRow
-                      key={file.id}
-                      id={file.id}
-                      name={file.name}
-                      type={file.type}
-                      created={file.created}
-                      createdBy={file.createdBy}
-                      status={file.status}
-                      totalSigners={file.totalSigners}
-                      signedBy={file.signedBy}
-                      version={file.version}
-                    />
-                  ))}
+                  {allFiles
+                    ?.sort(
+                      // sort by file type (folders -> containers -> files)
+                      (a, b) => {
+                        if (a.type === "FOLDER" && b.type !== "FOLDER") {
+                          return -1;
+                        }
+                        if (a.type !== "FOLDER" && b.type === "FOLDER") {
+                          return 1;
+                        }
+                        if (a.type === "CONTAINER" && b.type === "FILE") {
+                          return -1;
+                        }
+                        if (a.type === "FILE" && b.type === "CONTAINER") {
+                          return 1;
+                        }
+                        return 0;
+                      }
+                    )
+                    .map((file) => (
+                      <TableRow
+                        key={file.id}
+                        id={file.id}
+                        name={file.name}
+                        type={file.type}
+                        created={file.created}
+                        createdBy={file.createdBy}
+                        status={file.status}
+                        totalSigners={file.totalSigners}
+                        signedBy={file.signedBy}
+                        version={file.version}
+                      />
+                    ))}
                 </tbody>
               </table>
             </div>
